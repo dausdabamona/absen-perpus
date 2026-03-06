@@ -3,12 +3,14 @@ import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig({
+  base: '/absen-perpus/',
   plugins: [
     react(),
     VitePWA({
       registerType: 'autoUpdate',
       workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
+        navigateFallback: 'index.html',
       },
       manifest: {
         name: 'Perpus Absen — Politeknik KP Sorong',
@@ -18,10 +20,11 @@ export default defineConfig({
         background_color: '#FFFFFF',
         display: 'standalone',
         orientation: 'portrait',
-        start_url: '/',
+        start_url: '/absen-perpus/',
+        scope: '/absen-perpus/',
         icons: [
-          { src: '/icons/icon-192.svg', sizes: '192x192', type: 'image/svg+xml' },
-          { src: '/icons/icon-512.svg', sizes: '512x512', type: 'image/svg+xml' },
+          { src: '/absen-perpus/icons/icon-192.png', sizes: '192x192', type: 'image/png' },
+          { src: '/absen-perpus/icons/icon-512.png', sizes: '512x512', type: 'image/png' },
         ],
       },
     }),
